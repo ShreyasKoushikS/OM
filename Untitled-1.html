@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management Learning Module</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #333;
+            overflow: hidden;
+        }
+        nav button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            float: left;
+            font-size: 16px;
+        }
+        nav button:hover {
+            background-color: #555;
+        }
+        nav button.active {
+            background-color: #007bff;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: white;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .section-title {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .interactive-section {
+            margin-top: 20px;
+        }
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+            margin-bottom: 5px;
+        }
+        .accordion.active, .accordion:hover {
+            background-color: #ccc;
+        }
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+        img.placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        video.placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .quiz {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .quiz button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .quiz button:hover {
+            background-color: #0056b3;
+        }
+        #quiz-result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Order Management Learning Module</h1>
+    <p>Welcome to our professional training platform for mastering order management processes.</p>
+</header>
+
+<nav>
+    <button class="tab-button active" data-tab="home">Home</button>
+    <button class="tab-button" data-tab="standard-orders">Booking Standard Orders</button>
+    <button class="tab-button" data-tab="renewals">Renewals</button>
+    <button class="tab-button" data-tab="rebook">Rebook</button>
+    <button class="tab-button" data-tab="debook">Debook</button>
+    <button class="tab-button" data-tab="cancellations">Cancellation Requests</button>
+    <button class="tab-button" data-tab="amendments">Amendments</button>
+    <button class="tab-button" data-tab="tracking">Order Tracking</button>
+</nav>
+
+<div id="home" class="tab-content active">
+    <h2 class="section-title">Welcome to the Learning Module</h2>
+    <p>This module covers essential topics in order management. Use the tabs above to navigate to specific sections. Each topic includes step-by-step guides, images, videos, and interactive quizzes to enhance your learning experience.</p>
+    <img src="https://via.placeholder.com/600x300?text=Welcome+Image" alt="Welcome Image" class="placeholder">
+    <div class="interactive-section">
+        <p>Start your journey by selecting a tab!</p>
+    </div>
+</div>
+
+<div id="standard-orders" class="tab-content">
+    <h2 class="section-title">Booking Standard Orders</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. This section teaches you how to book standard orders efficiently.</p>
+    <img src="https://via.placeholder.com/600x400?text=Standard+Orders+Image" alt="Standard Orders Image" class="placeholder">
+    <video src="https://via.placeholder.com/600x400?text=Standard+Orders+Video" controls class="placeholder"></video>
+    <div class="interactive-section">
+        <button class="accordion">Step 1: Accessing the Order System</button>
+        <div class="panel">
+            <p>Details on how to log in and navigate to the booking section.</p>
+        </div>
+        <button class="accordion">Step 2: Entering Order Details</button>
+        <div class="panel">
+            <p>Random text about filling forms and selecting options.</p>
+        </div>
+        <div class="quiz">
+            <p>Quick Quiz: What is the first step in booking an order?</p>
+            <input type="radio" name="q1" value="a"> A) Log in<br>
+            <input type="radio" name="q1" value="b"> B) Exit<br>
+            <button onclick="checkQuiz('standard-orders')">Submit</button>
+            <div id="quiz-result-standard-orders"></div>
+        </div>
+    </div>
+</div>
+
+<div id="renewals" class="tab-content">
+    <h2 class="section-title">Renewals</h2>
+    <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Learn about renewing existing orders.</p>
+    <img src="https://via.placeholder.com/600x400?text=Renewals+Image" alt="Renewals Image" class="placeholder">
+    <video src="https://via.placeholder.com/600x400?text=Renewals+Video" controls class="placeholder"></video>
+    <div class="interactive-section">
+        <button class="accordion">Step 1: Identifying Renewable Orders</button>
+        <div class="panel">
+            <p>Explanation of criteria for renewals.</p>
+        </div>
+        <button class="accordion">Step 2: Processing Renewal</button>
+        <div class="panel">
+            <p>Steps to confirm and update.</p>
+        </div>
+        <div class="quiz">
+            <p>Quick Quiz: When can an order be renewed?</p>
+            <input type="radio" name="q2" value="a"> A) Anytime<br>
+            <input type="radio" name="q2" value="b"> B) Near expiration<br>
+            <button onclick="checkQuiz('renewals')">Submit</button>
+            <div id="quiz-result-renewals"></div>
+        </div>
+    </div>
+</div>
+
+<div id="rebook" class="tab-content">
+    <h2 class="section-title">Rebook</h2>
+    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Rebooking orders after changes.</p>
+    <img src="https://via.placeholder.com/600x400?text=Rebook+Image" alt="Rebook Image" class="placeholder">
+    <video src="https://via.placeholder.com/600x400?text=Rebook+Video" controls class="placeholder"></video>
+    <div class="interactive-section">
+        <button class="accordion">Step 1: Reviewing Changes</button>
+        <div class="panel">
+            <p>Assess what needs rebooking.</p>
+        </div>
+        <button class="accordion">Step 2: Executing Rebook</button>
+        <div class="panel">
+            <p>Process flow for rebooking.</p>
+        </div>
+        <div class="quiz">
+            <p>Quick Quiz: What triggers a rebook?</p>
+            <input type="radio" name="q3" value="a"> A) Cancellation<br>
+            <input type="radio" name="q3" value="b"> B) Schedule change<br>
+            <button onclick="checkQuiz('rebook')">Submit</button>
+            <div id="quiz-result-rebook"></div>
+        </div>
+    </div>
+</div>
+
+<div id="debook" class="tab-content">
+    <h2 class="section-title">Debook</h2>
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum. Debooking unwanted orders.</p>
+    <img src="https://via.placeholder.com/600x400?text=Debook+Image" alt="Debook Image" class="placeholder">
+    <video src="https://via.placeholder.com/600x400?text=Debook+Video" controls class="placeholder"></video>
+    <div class="interactive-section">
+        <button class="accordion">Step 1: Selecting Order to Debook</button>
+        <div class="panel">
+            <p>Identification process.</p>
+        </div>
+        <button class="accordion">Step 2: Confirming Debook</button>
+        <div class="panel">
+            <p>Final steps and confirmations.</p>
+        </div>
+        <div class="quiz">
+            <p>Quick Quiz: Is debook reversible?</p>
+            <input type="radio" name="q4" value="a"> A) Yes<br>
+            <input type="radio" name="q4" value="b"> B) No<br>
+            <button onclick="checkQuiz('debook')">Submit</button>
+            <div id="quiz-result-debook"></div>
+        </div>
+    </div>
+</div>
+
+<div id="cancellations" class="tab-content">
+    <h2 class="section-title">Cancellation Requests</h2>
+    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia. Handling cancellations professionally.</p>
+    <img src="https://via.placeholder.com/600x400?text=Cancellations+Image" alt="Cancellations Image" class="placeholder">
+    <video src="https://via.placeholder.com/600x400?text=Cancellations+Video" controls class="placeholder"></video>
+    <div class="interactive-section">
+        <button class="accordion">Step 1: Receiving Request</button>
+        <div class="panel">
+            <p>How to log cancellation requests.</p>
+        </div>
+        <button class="accordion">Step 2: Processing Cancellation</button>
+        <div class="panel">
+            <p>Refund and update procedures.</p>
+        </div>
+        <div class="quiz">
+            <p>Quick Quiz: What is required for cancellation?</p>
+            <input type="radio" name="q5" value="a"> A) Reason<br>
+            <input type="radio" name="q5" value="b"> B) Nothing<br>
+            <button onclick="checkQuiz('cancellations')">Submit</button>
+            <div id="quiz-result-cancellations"></div>
+        </div>
+    </div>
+</div>
+
+<div id="amendments" class="tab-content">
+    <h2 class="section-title">Amendments</h2>
+    <p>Deserunt mollit anim id est laborum. Making changes to existing orders.</p>
+    <img src="https://via.placeholder.com/600x400?text=Amendments+Image" alt="Amendments Image" class="placeholder">
+    <video src="https://via.placeholder.com/600x400?text=Amendments+Video" controls class="placeholder"></video>
+    <div class="interactive-section">
+        <button class="accordion">Step 1: Requesting Amendment</button>
+        <div class="panel">
+            <p>Form submission details.</p>
+        </div>
+        <button class="accordion">Step 2: Applying Changes</button>
+        <div class="panel">
+            <p>Update system records.</p>
+        </div>
+        <div class="quiz">
+            <p>Quick Quiz: Can all orders be amended?</p>
+            <input type="radio" name="q6" value="a"> A) Yes<br>
+            <input type="radio" name="q6" value="b"> B) No<br>
+            <button onclick="checkQuiz('amendments')">Submit</button>
+            <div id="quiz-result-amendments"></div>
+        </div>
+    </div>
+</div>
+
+<div id="tracking" class="tab-content">
+    <h2 class="section-title">Order Tracking</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Monitoring order status.</p>
+    <img src="https://via.placeholder.com/600x400?text=Tracking+Image" alt="Tracking Image" class="placeholder">
+    <video src="https://via.placeholder.com/600x400?text=Tracking+Video" controls class="placeholder"></video>
+    <div class="interactive-section">
+        <button class="accordion">Step 1: Accessing Tracking Tools</button>
+        <div class="panel">
+            <p>Navigation to tracking dashboard.</p>
+        </div>
+        <button class="accordion">Step 2: Interpreting Status</button>
+        <div class="panel">
+            <p>Understanding different statuses.</p>
+        </div>
+        <div class="quiz">
+            <p>Quick Quiz: What does 'In Transit' mean?</p>
+            <input type="radio" name="q7" value="a"> A) Delivered<br>
+            <input type="radio" name="q7" value="b"> B) On the way<br>
+            <button onclick="checkQuiz('tracking')">Submit</button>
+            <div id="quiz-result-tracking"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            tabContents.forEach(content => content.classList.remove('active'));
+            document.getElementById(button.dataset.tab).classList.add('active');
+        });
+    });
+
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(acc => {
+        acc.addEventListener('click', () => {
+            acc.classList.toggle('active');
+            const panel = acc.nextElementSibling;
+            if (panel.style.display === 'block') {
+                panel.style.display = 'none';
+            } else {
+                panel.style.display = 'block';
+            }
+        });
+    });
+
+    function checkQuiz(tabId) {
+        let resultDiv = document.getElementById(`quiz-result-${tabId}`);
+        let correctAnswer;
+        switch(tabId) {
+            case 'standard-orders': correctAnswer = 'a'; break;
+            case 'renewals': correctAnswer = 'b'; break;
+            case 'rebook': correctAnswer = 'b'; break;
+            case 'debook': correctAnswer = 'b'; break;
+            case 'cancellations': correctAnswer = 'a'; break;
+            case 'amendments': correctAnswer = 'b'; break;
+            case 'tracking': correctAnswer = 'b'; break;
+        }
+        const selected = document.querySelector(`input[name="q${tabId === 'standard-orders' ? 1 : tabId === 'renewals' ? 2 : tabId === 'rebook' ? 3 : tabId === 'debook' ? 4 : tabId === 'cancellations' ? 5 : tabId === 'amendments' ? 6 : 7}"]:checked`);
+        if (selected) {
+            if (selected.value === correctAnswer) {
+                resultDiv.textContent = 'Correct!';
+                resultDiv.style.color = 'green';
+            } else {
+                resultDiv.textContent = 'Incorrect. Try again!';
+                resultDiv.style.color = 'red';
+            }
+        } else {
+            resultDiv.textContent = 'Please select an answer.';
+            resultDiv.style.color = 'orange';
+        }
+    }
+</script>
+
+</body>
+</html>
