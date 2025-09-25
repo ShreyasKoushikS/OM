@@ -32,6 +32,53 @@
             from { transform: translateY(10px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+        .map-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .world-map {
+            width: 100%;
+            height: auto;
+            opacity: 0.9;
+        }
+        .country {
+            position: absolute;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .country:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.7));
+        }
+        .country-tooltip {
+            position: absolute;
+            background: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            font-size: 14px;
+            max-width: 200px;
+        }
+        .norway {
+            top: 15%;
+            left: 50%;
+            width: 8%;
+        }
+        .turkey {
+            top: 35%;
+            left: 60%;
+            width: 5%;
+        }
+        .country-highlight {
+            fill: #3B82F6;
+            opacity: 0.7;
+        }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
@@ -118,7 +165,48 @@
                 
                 <div id="inco-terms" class="subtab-content p-4 bg-gray-50 rounded-lg">
                     <h4 class="font-medium text-gray-800 mb-3">Inco Terms</h4>
-                    <p class="text-gray-600">International commercial terms information.</p>
+                    <p class="text-gray-600 mb-4">International commercial terms information for specific countries.</p>
+                    
+                    <div class="map-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/1200px-World_map_-_low_resolution.svg.png" alt="World Map" class="world-map">
+                        
+                        <!-- Norway -->
+                        <div class="country norway" data-country="norway">
+                            <svg viewBox="0 0 100 100" class="country-highlight">
+                                <path d="M10,10 L90,10 L90,90 L10,90 Z" fill="transparent"/>
+                            </svg>
+                        </div>
+                        
+                        <!-- Turkey -->
+                        <div class="country turkey" data-country="turkey">
+                            <svg viewBox="0 0 100 100" class="country-highlight">
+                                <path d="M10,10 L90,10 L90,90 L10,90 Z" fill="transparent"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="country-tooltip" id="country-tooltip"></div>
+                    </div>
+                    
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                            <h5 class="font-medium text-blue-600 mb-2">Norway</h5>
+                            <ul class="text-gray-600 text-sm space-y-1">
+                                <li><span class="font-medium">Common INCOTERMS:</span> EXW, FCA, CPT</li>
+                                <li><span class="font-medium">VAT Rate:</span> 25% standard rate</li>
+                                <li><span class="font-medium">Special Notes:</span> Customs documentation must include EORI number</li>
+                                <li><span class="font-medium">Lead Time:</span> 3-5 business days for standard shipments</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                            <h5 class="font-medium text-blue-600 mb-2">Turkey</h5>
+                            <ul class="text-gray-600 text-sm space-y-1">
+                                <li><span class="font-medium">Common INCOTERMS:</span> DAP, DDP, FOB</li>
+                                <li><span class="font-medium">VAT Rate:</span> 18% standard rate</li>
+                                <li><span class="font-medium">Special Notes:</span> Requires commercial invoice in Turkish</li>
+                                <li><span class="font-medium">Lead Time:</span> 5-7 business days for standard shipments</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -244,6 +332,53 @@
                     // Add active class to clicked subtab and corresponding content
                     btn.classList.add('border-blue-500', 'text-blue-600');
                     document.getElementById(subtabId).classList.add('active');
+                });
+            });
+            
+            // Map hover effects
+            const countries = document.querySelectorAll('.country');
+            const tooltip = document.getElementById('country-tooltip');
+            
+            const countryData = {
+                norway: {
+                    name: "Norway",
+                    info: "Common INCOTERMS: EXW, FCA, CPT. VAT: 25%. Requires EORI number."
+                },
+                turkey: {
+                    name: "Turkey",
+                    info: "Common INCOTERMS: DAP, DDP, FOB. VAT: 18%. Requires Turkish invoices."
+                }
+            };
+            
+            countries.forEach(country => {
+                const countryCode = country.getAttribute('data-country');
+                const data = countryData[countryCode];
+                
+                country.addEventListener('mouseenter', (e) => {
+                    // Position tooltip near the country
+                    const rect = country.getBoundingClientRect();
+                    tooltip.style.left = `${rect.left + rect.width/2}px`;
+                    tooltip.style.top = `${rect.top - 40}px`;
+                    
+                    // Set tooltip content
+                    tooltip.innerHTML = `
+                        <strong class="text-blue-600">${data.name}</strong>
+                        <div class="text-gray-600">${data.info}</div>
+                    `;
+                    
+                    // Show tooltip
+                    tooltip.style.opacity = '1';
+                    
+                    // Highlight country
+                    country.querySelector('svg path').setAttribute('fill', '#3B82F6');
+                });
+                
+                country.addEventListener('mouseleave', () => {
+                    // Hide tooltip
+                    tooltip.style.opacity = '0';
+                    
+                    // Remove highlight
+                    country.querySelector('svg path').setAttribute('fill', 'transparent');
                 });
             });
             
